@@ -1,0 +1,23 @@
+name: buildtex
+
+on:
+  push:
+    branches: main
+    paths: [docs/**]
+  pull_request:
+    branches: main
+    paths: [docs/**]
+
+jobs:
+  compile-latex:
+    runs-on: ubuntu-latest
+    steps: # from https://github.com/Crowdfeeding/rescue-delivery-capstone/blob/main/.github/workflows/docs.yaml
+      - uses: actions/checkout@v4
+      - uses: xu-cheng/texlive-action@v2
+        with:
+          scheme: full
+          texlive_version: 2024
+          run: |
+            apk add make
+            cd docs
+            make
