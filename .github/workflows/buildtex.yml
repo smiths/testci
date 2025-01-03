@@ -7,7 +7,9 @@ on:
   pull_request:
     branches: main
     paths: [docs/**]
-
+  permissions:
+    contents: write
+    
 jobs:
   compile-latex:
     runs-on: ubuntu-latest
