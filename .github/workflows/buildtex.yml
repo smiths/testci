@@ -21,3 +21,11 @@ jobs:
             apk add make
             cd docs
             make
+
+      # Commit and push generated PDFs (from ChatGPT advice)
+      - name: Commit and push PDFs
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Add/Update PDFs from changed LaTeX files'
+          file_pattern: 'docs/*.pdf'
+          branch: main
